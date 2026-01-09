@@ -30,6 +30,9 @@ class AlienInvasion:
     for event in pygame.event.get():
       if event.type == pygame.QUIT:
         sys.exit()
+      elif event.type == pygame.KEYDOWN and event.key == pygame.K_RIGHT:
+        # Move the ship to the right
+        self.alien_ship.rect.x += 1
 
   def update_screen(self):
     # Redraw the screen during each pass through the loop
