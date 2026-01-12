@@ -28,12 +28,7 @@ class AlienInvasion:
       self._check_events()
       self.alien_ship.update()
       self.bullets.update()
-
-      # Get rid of bullets that are no longer visible on the screen
-      for bullet in self.bullets.copy():
-        if bullet.rect.bottom <= 0:
-          self.bullets.remove(bullet)
-
+      self._update_bullets()
       self.update_screen()
 
   def _check_events(self):
@@ -81,6 +76,16 @@ class AlienInvasion:
     if len(self.bullets) < self.settings.bullets_allowed:
       new_bullet = Bullet(self)
       self.bullets.add(new_bullet)
+
+  def _update_bullets(self):
+    """Update position of bullets and get rid of old bullets"""
+    # Update bullet position
+    self.bullets.update()
+
+    # Get rid of bullets that have disappeared
+    for bullet in self.bullets.copy():
+      if bullet.rect.bottom <= 0:
+        self.bullets.remove(bullet)
 
   def update_screen(self):
     # Redraw the screen during each pass through the loop
