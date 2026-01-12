@@ -44,6 +44,12 @@ class AlienInvasion:
     elif event.key == pygame.K_LEFT:
       # Move the ship to the left
       self.alien_ship.moving_left = True
+    elif event.key == pygame.K_UP:
+      # Move the ship up
+      self.alien_ship.moving_up = True
+    elif event.key == pygame.K_DOWN:
+      # Move the ship down
+      self.alien_ship.moving_down = True
     elif event.key == pygame.K_q:
       sys.exit()
 
@@ -53,6 +59,10 @@ class AlienInvasion:
       self.alien_ship.moving_right = False
     elif event.key == pygame.K_LEFT:
       self.alien_ship.moving_left = False
+    elif event.key == pygame.K_UP:
+      self.alien_ship.moving_up = False
+    elif event.key == pygame.K_DOWN:
+      self.alien_ship.moving_down = False
 
   def update_screen(self):
     # Redraw the screen during each pass through the loop
