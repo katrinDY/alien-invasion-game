@@ -1,14 +1,14 @@
 import pygame
 
-class AlienCharacter:
-  """A class dedicated to the alien character"""
+class Astronaut:
+  """A class dedicated to the astronaut character (the player) in the game."""
   
   def __init__(self, ai_game):
     self.screen = ai_game.screen
     self.screen_rect = ai_game.screen.get_rect()
     
-    # Load alien character and its rect
-    self.image = pygame.image.load('images/alien_character.bmp')
+    # Load astronaut character and its rect
+    self.image = pygame.image.load('images/astronaut.bmp')
     self.rect = self.image.get_rect()
     
     # Add character to the bottom left corner of the screen

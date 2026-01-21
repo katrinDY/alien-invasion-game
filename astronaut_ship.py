@@ -1,15 +1,15 @@
 import pygame
 
-class AlienShip:
-  """A class to manage the alien ship"""
+class AstronautShip:
+  """A class to manage the astronaut ship"""
   
   def __init__(self, ai_game):
     self.screen = ai_game.screen
     self.settings = ai_game.settings
     self.screen_rect = ai_game.screen.get_rect()
   
-    # Load the alien ship and get its rect
-    self.image = pygame.image.load('images/ufo.bmp')
+    # Load the astronaut ship and get its rect
+    self.image = pygame.image.load('images/astronaut_ship.bmp')
     self.rect = self.image.get_rect()
   
     # Start each new ship at the bottom center of the screen

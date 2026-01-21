@@ -1,8 +1,8 @@
 import sys
 import pygame
 from settings import Settings
-from alien_ship import AlienShip
-from alien_character import AlienCharacter
+from astronaut_ship import AstronautShip
+from astronaut import Astronaut
 from bullet import Bullet
 
 class AlienInvasion:
@@ -15,9 +15,9 @@ class AlienInvasion:
     self.screen = pygame.display.set_mode(
       (self.settings.screen_width, self.settings.screen_height)
     )
-    self.alien_ship = AlienShip(self)
+    self.astronaut_ship = AstronautShip(self)
     self.bullets = pygame.sprite.Group()
-    self.alien_character = AlienCharacter(self)
+    self.astronaut = Astronaut(self)
     pygame.display.set_caption("Alien Invasion")
     # Set the background color
     self.bg_color = (230, 230, 230)
@@ -26,7 +26,7 @@ class AlienInvasion:
     """Start the main loop for the game"""
     while True:
       self._check_events()
-      self.alien_ship.update()
+      self.astronaut_ship.update()
       self.bullets.update()
       self._update_bullets()
       self.update_screen()
@@ -45,16 +45,16 @@ class AlienInvasion:
     """Respond to key press"""
     if event.key == pygame.K_RIGHT:
       # Move the ship to the right
-      self.alien_ship.moving_right = True
+      self.astronaut_ship.moving_right = True
     elif event.key == pygame.K_LEFT:
       # Move the ship to the left
-      self.alien_ship.moving_left = True
+      self.astronaut_ship.moving_left = True
     elif event.key == pygame.K_UP:
       # Move the ship up
-      self.alien_ship.moving_up = True
+      self.astronaut_ship.moving_up = True
     elif event.key == pygame.K_DOWN:
       # Move the ship down
-      self.alien_ship.moving_down = True
+      self.astronaut_ship.moving_down = True
     elif event.key == pygame.K_SPACE:
       self._fire_bullet()
     elif event.key == pygame.K_q:
@@ -63,13 +63,13 @@ class AlienInvasion:
   def _check_keyup_events(self, event):
     """Respond to key release"""
     if event.key == pygame.K_RIGHT:
-      self.alien_ship.moving_right = False
+      self.astronaut_ship.moving_right = False
     elif event.key == pygame.K_LEFT:
-      self.alien_ship.moving_left = False
+      self.astronaut_ship.moving_left = False
     elif event.key == pygame.K_UP:
-      self.alien_ship.moving_up = False
+      self.astronaut_ship.moving_up = False
     elif event.key == pygame.K_DOWN:
-      self.alien_ship.moving_down = False
+      self.astronaut_ship.moving_down = False
 
   def _fire_bullet(self):
     """Create a new bullet and add it to the bullet group"""
@@ -90,10 +90,10 @@ class AlienInvasion:
   def update_screen(self):
     # Redraw the screen during each pass through the loop
     self.screen.fill(self.settings.bg_color)
-    # Add alien ship
-    self.alien_ship.blitme()
-    # Add alien character
-    self.alien_character.blitme()
+    # Add astronaut ship
+    self.astronaut_ship.blitme()
+    # Add astronaut character
+    self.astronaut.blitme()
 
     for bullet in self.bullets.sprites():
       bullet.draw_bullet()

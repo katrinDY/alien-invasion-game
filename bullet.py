@@ -18,7 +18,7 @@ class Bullet(Sprite):
       self.settings.bullet_width,
       self.settings.bullet_height
     )
-    self.rect.midtop = ai_game.alien_ship.rect.midtop
+    self.rect.midtop = ai_game.astronaut_ship.rect.midtop
 
     # Store the bullet's position as a decimal value
     self.y = float(self.rect.y)
