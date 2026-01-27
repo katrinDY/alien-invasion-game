@@ -63,6 +63,7 @@ class AlienInvasion:
       self.astronaut_ship.update()
       self.bullets.update()
       self._update_bullets()
+      self._update_aliens()
       self.update_screen()
 
   def _check_events(self):
@@ -120,6 +121,10 @@ class AlienInvasion:
     for bullet in self.bullets.copy():
       if bullet.rect.bottom <= 0:
         self.bullets.remove(bullet)
+
+  def _update_aliens(self):
+    """Update the positions of all aliens in the fleet"""
+    self.aliens.update()
 
   def update_screen(self):
     # Redraw the screen during each pass through the loop
