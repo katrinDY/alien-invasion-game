@@ -28,8 +28,23 @@ class AlienInvasion:
 
   def _create_fleet(self):
     """Create a fleet of aliens"""
-    # Make an alien.
+    # Create an alien and find the number of aliens in a row
+    # Spacing between each alien is equal to one alien width
     alien_ship = AlienShip(self)
+    alien_width = alien_ship.rect.width
+    available_space_x = self.settings.screen_width - (2 * alien_width)
+    number_of_aliens_x = available_space_x // (2 * alien_width)
+    
+    # Create the first row of aliens
+    for alien_number in range(number_of_aliens_x):
+      self._create_alien(alien_number)
+
+  def _create_alien(self, alien_number):
+    """Create an alien and place it in a row"""
+    alien_ship = AlienShip(self)
+    alien_width = alien_ship.rect.width
+    alien_ship.x = alien_width + 2.3 * alien_width * alien_number
+    alien_ship.rect.x = alien_ship.x
     self.aliens.add(alien_ship)
 
   def run_game(self):
